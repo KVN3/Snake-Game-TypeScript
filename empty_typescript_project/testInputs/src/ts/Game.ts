@@ -1,51 +1,56 @@
 import * as PIXI from 'pixi.js';
+import { Snake } from './objects/Snake';
+import { Vector2 } from './types/Vector2';
+import { InputHandler } from './user/InputHandler';
+import { APPLICATION } from './app';
+import tileSetPath from '../resources/images/Snake.png';
 
 export class Game
 {
-    private _app: PIXI.Application;
+    private _snake: Snake;
+    private _inputHandler: InputHandler;
 
     public constructor()
     {
-        // Create the application
-        this._app = new PIXI.Application();
+      console.log("Creating game...");
 
-        // Add the view to the DOM
-        document.body.appendChild(this._app.view);
+      this.initializeView();
 
-        // Uncaught error - can't add?
-        // this._app.stage.addChild(PIXI.Sprite.from("rock.png"));
+      this.loadSprites();
 
-        this.loadTextures();
+      this._inputHandler = new InputHandler();
+
+      this._snake = new Snake(new Vector2(256,256));
+
+      this.gameLoop();
     }
 
-    public loadTextures(): void
-    {
-        this._app.loader.add
-            ([
-                "./rock.png",
-                "./cat.PNG",
-            ]);
-
-        this.addSpritesToStage();
+    private initializeView(){
+      document.body.appendChild(APPLICATION.view);
     }
 
-    public addSpritesToStage()
+    public gameLoop()
     {
-        console.log("All files loaded");
-        console.log(this._app);
-        console.log(this._app.loader);
+      APPLICATION.renderer.clearBeforeRender = true;
+      APPLICATION.render();
 
-        // Nope
-        let texture = this._app.loader.resources["./rock.png"].texture;
-        console.log(texture);
+      // Handle input
+      document.addEventListener('keyup', this._inputHandler.onKeyUp);
+      this._inputHandler.processInput(this._snake);
 
-        // Texture, maar error
-        texture = PIXI.Texture.from('./rock.png');
-        console.log(texture);
+      // Update elements
+      //this._snake.update();
 
-        // let sprite = new PIXI.Sprite(texture);
+      requestAnimationFrame(() => this.gameLoop());
+    }
 
-        // this._app.stage.addChild(sprite);
-        // sprite.visible = true;
+    public loadSprites()
+    {
+      
     }
 }
+
+// let img : HTMLImageElement = document.getElementById('tileset') as HTMLImageElement;
+// 
+// console.log("---stage children---");
+// console.log(this._app.stage.children);

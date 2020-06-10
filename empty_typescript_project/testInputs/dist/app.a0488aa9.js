@@ -43842,7 +43842,283 @@ var filters = {
   NoiseFilter: _filterNoise.NoiseFilter
 };
 exports.filters = filters;
-},{"@pixi/polyfill":"../node_modules/@pixi/polyfill/lib/polyfill.es.js","@pixi/accessibility":"../node_modules/@pixi/accessibility/lib/accessibility.es.js","@pixi/interaction":"../node_modules/@pixi/interaction/lib/interaction.es.js","@pixi/utils":"../node_modules/@pixi/utils/lib/utils.es.js","@pixi/app":"../node_modules/@pixi/app/lib/app.es.js","@pixi/core":"../node_modules/@pixi/core/lib/core.es.js","@pixi/extract":"../node_modules/@pixi/extract/lib/extract.es.js","@pixi/loaders":"../node_modules/@pixi/loaders/lib/loaders.es.js","@pixi/particles":"../node_modules/@pixi/particles/lib/particles.es.js","@pixi/prepare":"../node_modules/@pixi/prepare/lib/prepare.es.js","@pixi/spritesheet":"../node_modules/@pixi/spritesheet/lib/spritesheet.es.js","@pixi/sprite-tiling":"../node_modules/@pixi/sprite-tiling/lib/sprite-tiling.es.js","@pixi/text-bitmap":"../node_modules/@pixi/text-bitmap/lib/text-bitmap.es.js","@pixi/ticker":"../node_modules/@pixi/ticker/lib/ticker.es.js","@pixi/filter-alpha":"../node_modules/@pixi/filter-alpha/lib/filter-alpha.es.js","@pixi/filter-blur":"../node_modules/@pixi/filter-blur/lib/filter-blur.es.js","@pixi/filter-color-matrix":"../node_modules/@pixi/filter-color-matrix/lib/filter-color-matrix.es.js","@pixi/filter-displacement":"../node_modules/@pixi/filter-displacement/lib/filter-displacement.es.js","@pixi/filter-fxaa":"../node_modules/@pixi/filter-fxaa/lib/filter-fxaa.es.js","@pixi/filter-noise":"../node_modules/@pixi/filter-noise/lib/filter-noise.es.js","@pixi/mixin-cache-as-bitmap":"../node_modules/@pixi/mixin-cache-as-bitmap/lib/mixin-cache-as-bitmap.es.js","@pixi/mixin-get-child-by-name":"../node_modules/@pixi/mixin-get-child-by-name/lib/mixin-get-child-by-name.es.js","@pixi/mixin-get-global-position":"../node_modules/@pixi/mixin-get-global-position/lib/mixin-get-global-position.es.js","@pixi/constants":"../node_modules/@pixi/constants/lib/constants.es.js","@pixi/display":"../node_modules/@pixi/display/lib/display.es.js","@pixi/graphics":"../node_modules/@pixi/graphics/lib/graphics.es.js","@pixi/math":"../node_modules/@pixi/math/lib/math.es.js","@pixi/mesh":"../node_modules/@pixi/mesh/lib/mesh.es.js","@pixi/mesh-extras":"../node_modules/@pixi/mesh-extras/lib/mesh-extras.es.js","@pixi/runner":"../node_modules/@pixi/runner/lib/runner.es.js","@pixi/sprite":"../node_modules/@pixi/sprite/lib/sprite.es.js","@pixi/sprite-animated":"../node_modules/@pixi/sprite-animated/lib/sprite-animated.es.js","@pixi/text":"../node_modules/@pixi/text/lib/text.es.js","@pixi/settings":"../node_modules/@pixi/settings/lib/settings.es.js"}],"ts/Game.ts":[function(require,module,exports) {
+},{"@pixi/polyfill":"../node_modules/@pixi/polyfill/lib/polyfill.es.js","@pixi/accessibility":"../node_modules/@pixi/accessibility/lib/accessibility.es.js","@pixi/interaction":"../node_modules/@pixi/interaction/lib/interaction.es.js","@pixi/utils":"../node_modules/@pixi/utils/lib/utils.es.js","@pixi/app":"../node_modules/@pixi/app/lib/app.es.js","@pixi/core":"../node_modules/@pixi/core/lib/core.es.js","@pixi/extract":"../node_modules/@pixi/extract/lib/extract.es.js","@pixi/loaders":"../node_modules/@pixi/loaders/lib/loaders.es.js","@pixi/particles":"../node_modules/@pixi/particles/lib/particles.es.js","@pixi/prepare":"../node_modules/@pixi/prepare/lib/prepare.es.js","@pixi/spritesheet":"../node_modules/@pixi/spritesheet/lib/spritesheet.es.js","@pixi/sprite-tiling":"../node_modules/@pixi/sprite-tiling/lib/sprite-tiling.es.js","@pixi/text-bitmap":"../node_modules/@pixi/text-bitmap/lib/text-bitmap.es.js","@pixi/ticker":"../node_modules/@pixi/ticker/lib/ticker.es.js","@pixi/filter-alpha":"../node_modules/@pixi/filter-alpha/lib/filter-alpha.es.js","@pixi/filter-blur":"../node_modules/@pixi/filter-blur/lib/filter-blur.es.js","@pixi/filter-color-matrix":"../node_modules/@pixi/filter-color-matrix/lib/filter-color-matrix.es.js","@pixi/filter-displacement":"../node_modules/@pixi/filter-displacement/lib/filter-displacement.es.js","@pixi/filter-fxaa":"../node_modules/@pixi/filter-fxaa/lib/filter-fxaa.es.js","@pixi/filter-noise":"../node_modules/@pixi/filter-noise/lib/filter-noise.es.js","@pixi/mixin-cache-as-bitmap":"../node_modules/@pixi/mixin-cache-as-bitmap/lib/mixin-cache-as-bitmap.es.js","@pixi/mixin-get-child-by-name":"../node_modules/@pixi/mixin-get-child-by-name/lib/mixin-get-child-by-name.es.js","@pixi/mixin-get-global-position":"../node_modules/@pixi/mixin-get-global-position/lib/mixin-get-global-position.es.js","@pixi/constants":"../node_modules/@pixi/constants/lib/constants.es.js","@pixi/display":"../node_modules/@pixi/display/lib/display.es.js","@pixi/graphics":"../node_modules/@pixi/graphics/lib/graphics.es.js","@pixi/math":"../node_modules/@pixi/math/lib/math.es.js","@pixi/mesh":"../node_modules/@pixi/mesh/lib/mesh.es.js","@pixi/mesh-extras":"../node_modules/@pixi/mesh-extras/lib/mesh-extras.es.js","@pixi/runner":"../node_modules/@pixi/runner/lib/runner.es.js","@pixi/sprite":"../node_modules/@pixi/sprite/lib/sprite.es.js","@pixi/sprite-animated":"../node_modules/@pixi/sprite-animated/lib/sprite-animated.es.js","@pixi/text":"../node_modules/@pixi/text/lib/text.es.js","@pixi/settings":"../node_modules/@pixi/settings/lib/settings.es.js"}],"ts/types/Vector2.ts":[function(require,module,exports) {
+"use strict";
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var Vector2 = /*#__PURE__*/function () {
+  function Vector2() {
+    var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+    var y = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+
+    _classCallCheck(this, Vector2);
+
+    this.x = x;
+    this.y = y;
+  }
+
+  _createClass(Vector2, [{
+    key: "set",
+    value: function set(x, y) {
+      this.x = x;
+      this.y = y;
+    }
+  }]);
+
+  return Vector2;
+}();
+
+exports.Vector2 = Vector2;
+},{}],"ts/types/Enums.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var GameKey;
+
+(function (GameKey) {
+  GameKey[GameKey["UP"] = 38] = "UP";
+  GameKey[GameKey["DOWN"] = 40] = "DOWN";
+  GameKey[GameKey["LEFT"] = 37] = "LEFT";
+  GameKey[GameKey["RIGHT"] = 39] = "RIGHT";
+  GameKey[GameKey["SPACE"] = 32] = "SPACE";
+})(GameKey = exports.GameKey || (exports.GameKey = {}));
+
+var ScreenEdge;
+
+(function (ScreenEdge) {
+  ScreenEdge[ScreenEdge["UP"] = 0] = "UP";
+  ScreenEdge[ScreenEdge["RIGHT"] = 1] = "RIGHT";
+  ScreenEdge[ScreenEdge["BOTTOM"] = 2] = "BOTTOM";
+  ScreenEdge[ScreenEdge["LEFT"] = 3] = "LEFT";
+})(ScreenEdge = exports.ScreenEdge || (exports.ScreenEdge = {}));
+
+var Axis;
+
+(function (Axis) {
+  Axis[Axis["X"] = 0] = "X";
+  Axis[Axis["Y"] = 1] = "Y";
+})(Axis = exports.Axis || (exports.Axis = {}));
+},{}],"ts/types/MovementDirection.ts":[function(require,module,exports) {
+"use strict";
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var MovementDirection = /*#__PURE__*/function () {
+  function MovementDirection(axis, direction) {
+    _classCallCheck(this, MovementDirection);
+
+    this._axis = axis;
+    this._direction = direction;
+  }
+
+  _createClass(MovementDirection, [{
+    key: "set",
+    value: function set(axis, direction) {
+      this._axis = axis;
+      this._direction = direction;
+    }
+  }, {
+    key: "getAxis",
+    value: function getAxis() {
+      return this._axis;
+    }
+  }, {
+    key: "getDirectionNumber",
+    value: function getDirectionNumber() {
+      return this._direction;
+    }
+  }]);
+
+  return MovementDirection;
+}();
+
+exports.MovementDirection = MovementDirection;
+},{}],"ts/helper/Tileset.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.HEAD_UP = new PIXI.Rectangle(0, 0, 16, 16);
+exports.HEAD_RIGHT = new PIXI.Rectangle(16, 0, 16, 16);
+exports.HEAD_DOWN = new PIXI.Rectangle(32, 0, 16, 16);
+exports.HEAD_LEFT = new PIXI.Rectangle(48, 0, 16, 16);
+exports.TAIL_UP = new PIXI.Rectangle(0, 16, 16, 16);
+exports.TAIL_RIGHT = new PIXI.Rectangle(16, 16, 16, 16);
+exports.TAIL_DOWN = new PIXI.Rectangle(32, 16, 16, 16);
+exports.TAIL_LEFT = new PIXI.Rectangle(48, 16, 16, 16);
+exports.TURN_TOP_RIGHT = new PIXI.Rectangle(0, 32, 16, 16);
+exports.TURN_BOTTOM_LEFT = new PIXI.Rectangle(16, 32, 16, 16);
+exports.TURN_BOTTOM_RIGHT = new PIXI.Rectangle(32, 32, 16, 16);
+exports.TURN_TOP_LEFT = new PIXI.Rectangle(48, 32, 16, 16);
+exports.Y_STRAIGHT = new PIXI.Rectangle(0, 48, 16, 16);
+exports.X_STRAIGHT = new PIXI.Rectangle(16, 48, 16, 16);
+exports.BUNNY = new PIXI.Rectangle(32, 48, 16, 16);
+exports.GRASS = new PIXI.Rectangle(48, 48, 16, 16);
+exports.TILESET_WIDTH = 128;
+exports.TILESET_HEIGHT = 128;
+},{}],"ts/objects/SnakeSegment.ts":[function(require,module,exports) {
+"use strict";
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+  }
+  result["default"] = mod;
+  return result;
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var app_1 = require("~ts/app");
+
+var TILESET = __importStar(require("~ts/helper/Tileset"));
+
+var MovementDirection_1 = require("~ts/types/MovementDirection");
+
+var Enums_1 = require("~ts/types/Enums");
+
+var SnakeSegment = /*#__PURE__*/function () {
+  function SnakeSegment(position, direction) {
+    var isHead = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
+    _classCallCheck(this, SnakeSegment);
+
+    this._direction = new MovementDirection_1.MovementDirection(Enums_1.Axis.Y, -1);
+    this._previousFrame = TILESET.BUNNY;
+    this.previousRotation = 0;
+    this._sprite = new PIXI.Sprite();
+    this.position = position;
+    this._isHead = isHead;
+    this._isTail = false;
+    this._direction = direction;
+    this.draw();
+  }
+
+  _createClass(SnakeSegment, [{
+    key: "getPreviousFrame",
+    value: function getPreviousFrame() {
+      return this._previousFrame;
+    }
+  }, {
+    key: "setTail",
+    value: function setTail(isTail) {
+      this._isTail = isTail;
+    }
+  }, {
+    key: "isHead",
+    value: function isHead() {
+      return this._isHead;
+    }
+  }, {
+    key: "getSprite",
+    value: function getSprite() {
+      return this._sprite;
+    }
+  }, {
+    key: "setDirection",
+    value: function setDirection(direction) {
+      this._direction.set(direction.getAxis(), direction.getDirectionNumber());
+    }
+  }, {
+    key: "getDirection",
+    value: function getDirection() {
+      return this._direction;
+    }
+  }, {
+    key: "onCollision",
+    value: function onCollision(snake) {}
+  }, {
+    key: "update",
+    value: function update() {
+      this._sprite.position.x = this.position.x;
+      this._sprite.position.y = this.position.y;
+    }
+  }, {
+    key: "draw",
+    value: function draw() {
+      var texture = PIXI.Texture.from("tileset");
+      texture = PIXI.Texture.from("tileset");
+      var newTexture = new PIXI.Texture(texture.baseTexture);
+      this._sprite = new PIXI.Sprite(newTexture);
+      this.setFrame(TILESET.Y_STRAIGHT, 0);
+      this._sprite.x = this.position.x;
+      this._sprite.y = this.position.y;
+      app_1.APPLICATION.stage.addChild(this._sprite);
+      app_1.APPLICATION.renderer.render(app_1.APPLICATION.stage);
+    }
+  }, {
+    key: "setFrame",
+    value: function setFrame(rectangle, rotation) {
+      this._previousFrame = this._sprite.texture.frame;
+      this._sprite.texture.frame = rectangle;
+
+      if (this.previousRotation != 0 || rotation != 0) {
+        this.rotateFrame(rotation);
+        this.previousRotation = rotation;
+      } else {
+        this.previousRotation = 0;
+      }
+    }
+  }, {
+    key: "rotateFrame",
+    value: function rotateFrame(rotation) {
+      if (rotation === 0) return;
+      this._sprite.texture = new PIXI.Texture(this._sprite.texture.baseTexture, this._sprite.texture.frame, this._sprite.texture.orig, this._sprite.texture.trim, rotation);
+    }
+  }, {
+    key: "setHeadFrame",
+    value: function setHeadFrame(movementDirection) {
+      var frame = TILESET.HEAD_UP;
+
+      switch (movementDirection.getAxis()) {
+        case Enums_1.Axis.X:
+          frame = movementDirection.getDirectionNumber() === 1 ? TILESET.HEAD_RIGHT : TILESET.HEAD_LEFT;
+          break;
+
+        case Enums_1.Axis.Y:
+          frame = movementDirection.getDirectionNumber() === 1 ? TILESET.HEAD_DOWN : TILESET.HEAD_UP;
+          break;
+      }
+
+      this.setFrame(frame, 0);
+    }
+  }]);
+
+  return SnakeSegment;
+}();
+
+exports.SnakeSegment = SnakeSegment;
+},{"~ts/app":"ts/app.ts","~ts/helper/Tileset":"ts/helper/Tileset.ts","~ts/types/MovementDirection":"ts/types/MovementDirection.ts","~ts/types/Enums":"ts/types/Enums.ts"}],"ts/objects/Snake.ts":[function(require,module,exports) {
 "use strict";
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -43867,41 +44143,279 @@ Object.defineProperty(exports, "__esModule", {
 
 var PIXI = __importStar(require("pixi.js"));
 
+var Vector2_1 = require("../types/Vector2");
+
+var Enums_1 = require("../types/Enums");
+
+var MovementDirection_1 = require("../types/MovementDirection");
+
+var SnakeSegment_1 = require("./SnakeSegment");
+
+var TILESET = __importStar(require("~ts/helper/Tileset"));
+
+var Snake = /*#__PURE__*/function () {
+  function Snake(position) {
+    _classCallCheck(this, Snake);
+
+    this._movementModifier = 16;
+    this._direction = new MovementDirection_1.MovementDirection(Enums_1.Axis.Y, -1);
+    this._segments = [];
+    this.position = position;
+    this._sprite = new PIXI.Sprite();
+    this.draw();
+    this._segments[0] = new SnakeSegment_1.SnakeSegment(new Vector2_1.Vector2(position.x, position.y), this._direction, true);
+    this._segments[1] = new SnakeSegment_1.SnakeSegment(new Vector2_1.Vector2(position.x + 16, position.y), new MovementDirection_1.MovementDirection(this._direction.getAxis(), this._direction.getDirectionNumber()));
+  }
+
+  _createClass(Snake, [{
+    key: "setDirection",
+    value: function setDirection(axis, direction) {
+      if (this._direction.getAxis() === axis) return;
+
+      this._direction.set(axis, direction);
+    }
+  }, {
+    key: "update",
+    value: function update() {
+      this.applyDirection();
+      console.log(this._direction);
+      console.log("NEW UPDATE #########");
+      var nextSegmentPosition = new Vector2_1.Vector2(0, 0);
+
+      for (var i = 0; i < this._segments.length; i++) {
+        var segment = this._segments[i];
+
+        if (segment.isHead()) {
+          var tempPosition = new Vector2_1.Vector2(segment.position.x, segment.position.y);
+          segment.position.set(this.position.x, this.position.y);
+          nextSegmentPosition = tempPosition;
+          segment.setHeadFrame(this._direction);
+        } else {
+          var _tempPosition = new Vector2_1.Vector2(segment.position.x, segment.position.y);
+
+          segment.position.set(nextSegmentPosition.x, nextSegmentPosition.y);
+          nextSegmentPosition = _tempPosition;
+          segment.setDirection(this._segments[i - 1].getDirection());
+        }
+
+        segment.update();
+      }
+    }
+  }, {
+    key: "setCorrectFrame",
+    value: function setCorrectFrame(nextSegment, currentSegment) {
+      var frame = currentSegment.getSprite().texture.frame;
+      var rotation = 0;
+
+      if (nextSegment.isHead()) {
+        console.log("-------");
+        var xOrYC = currentSegment.getDirection().getAxis() === 1 ? "Y" : "X";
+        console.log("CURR (" + xOrYC + ", " + currentSegment.getDirection().getDirectionNumber().toString() + ")");
+        var xOrY = nextSegment.getDirection().getAxis() === 1 ? "Y" : "X";
+        console.log("NEXT (" + xOrY + ", " + nextSegment.getDirection().getDirectionNumber().toString() + ")");
+
+        if (nextSegment.getDirection().getAxis() != currentSegment.getDirection().getAxis()) {
+          console.log("Axis changed");
+
+          switch (nextSegment.getDirection().getAxis()) {
+            case Enums_1.Axis.X:
+              console.log("X");
+
+              if (nextSegment.getDirection().getDirectionNumber() === 1) {
+                if (currentSegment.getDirection().getDirectionNumber() === 1) {
+                  frame = TILESET.TURN_BOTTOM_LEFT;
+                } else {
+                  frame = TILESET.TURN_BOTTOM_RIGHT;
+                  rotation = 12;
+                }
+              } else {
+                if (currentSegment.getDirection().getDirectionNumber() === 1) {
+                  frame = TILESET.TURN_BOTTOM_RIGHT;
+                } else {
+                  frame = TILESET.TURN_BOTTOM_LEFT;
+                }
+              }
+
+              break;
+
+            case Enums_1.Axis.Y:
+              console.log("Y");
+
+              if (nextSegment.getDirection().getDirectionNumber() === 1) {
+                if (currentSegment.getDirection().getDirectionNumber() === 1) {
+                  frame = TILESET.TURN_TOP_RIGHT;
+                } else {
+                  frame = TILESET.TURN_TOP_LEFT;
+                  rotation = 24;
+                }
+              } else {
+                if (currentSegment.getDirection().getDirectionNumber() === 1) {
+                  frame = TILESET.TURN_TOP_RIGHT;
+                } else {
+                  frame = TILESET.TURN_TOP_RIGHT;
+                }
+              }
+
+              break;
+          }
+        } else {
+          frame = nextSegment.getDirection().getAxis() === Enums_1.Axis.X ? TILESET.X_STRAIGHT : TILESET.Y_STRAIGHT;
+        }
+      } else {
+        frame = nextSegment.getPreviousFrame();
+        rotation = nextSegment.previousRotation;
+
+        if (frame === TILESET.Y_STRAIGHT || frame === TILESET.X_STRAIGHT) {
+          rotation = 0;
+        }
+      }
+
+      console.log("Should rotate= " + rotation);
+      currentSegment.setFrame(frame, rotation);
+    }
+  }, {
+    key: "applyDirection",
+    value: function applyDirection() {
+      if (this._direction.getAxis() == Enums_1.Axis.X) {
+        this.position.x += this._direction.getDirectionNumber() * this._movementModifier;
+      }
+
+      if (this._direction.getAxis() == Enums_1.Axis.Y) {
+        this.position.y += this._direction.getDirectionNumber() * this._movementModifier;
+      }
+    }
+  }, {
+    key: "draw",
+    value: function draw() {
+      this._segments.forEach(function (segment) {
+        segment.draw();
+      });
+    }
+  }]);
+
+  return Snake;
+}();
+
+exports.Snake = Snake;
+},{"pixi.js":"../node_modules/pixi.js/lib/pixi.es.js","../types/Vector2":"ts/types/Vector2.ts","../types/Enums":"ts/types/Enums.ts","../types/MovementDirection":"ts/types/MovementDirection.ts","./SnakeSegment":"ts/objects/SnakeSegment.ts","~ts/helper/Tileset":"ts/helper/Tileset.ts"}],"ts/user/InputHandler.ts":[function(require,module,exports) {
+"use strict";
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var Enums_1 = require("../types/Enums");
+
+var InputHandler = /*#__PURE__*/function () {
+  function InputHandler() {
+    var _this = this;
+
+    _classCallCheck(this, InputHandler);
+
+    this.lastControlKeyPressed = Enums_1.GameKey.LEFT;
+    this.spaceKeyPressed = 0;
+
+    this.onKeyUp = function (ev) {
+      if (ev.keyCode === Enums_1.GameKey.SPACE) _this.spaceKeyPressed = ev.keyCode;else _this.lastControlKeyPressed = ev.keyCode;
+    };
+  }
+
+  _createClass(InputHandler, [{
+    key: "processInput",
+    value: function processInput(snake) {
+      var axis = this.lastControlKeyPressed === Enums_1.GameKey.UP || this.lastControlKeyPressed === Enums_1.GameKey.DOWN ? Enums_1.Axis.Y : Enums_1.Axis.X;
+      var direction = this.lastControlKeyPressed === Enums_1.GameKey.LEFT || this.lastControlKeyPressed === Enums_1.GameKey.UP ? -1 : 1;
+      snake.setDirection(axis, direction);
+
+      if (this.spaceKeyPressed === Enums_1.GameKey.SPACE) {
+        snake.update();
+        this.spaceKeyPressed = 0;
+      }
+    }
+  }]);
+
+  return InputHandler;
+}();
+
+exports.InputHandler = InputHandler;
+},{"../types/Enums":"ts/types/Enums.ts"}],"ts/Game.ts":[function(require,module,exports) {
+"use strict";
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var Snake_1 = require("./objects/Snake");
+
+var Vector2_1 = require("./types/Vector2");
+
+var InputHandler_1 = require("./user/InputHandler");
+
+var app_1 = require("./app");
+
 var Game = /*#__PURE__*/function () {
   function Game() {
     _classCallCheck(this, Game);
 
-    this._app = new PIXI.Application();
-    document.body.appendChild(this._app.view);
-    this.loadTextures();
+    console.log("Creating game...");
+    this.initializeView();
+    this.loadSprites();
+    this._inputHandler = new InputHandler_1.InputHandler();
+    this._snake = new Snake_1.Snake(new Vector2_1.Vector2(256, 256));
+    this.gameLoop();
   }
 
   _createClass(Game, [{
-    key: "loadTextures",
-    value: function loadTextures() {
-      this._app.loader.add(["./rock.png", "./cat.PNG"]);
-
-      this.addSpritesToStage();
+    key: "initializeView",
+    value: function initializeView() {
+      document.body.appendChild(app_1.APPLICATION.view);
     }
   }, {
-    key: "addSpritesToStage",
-    value: function addSpritesToStage() {
-      console.log("All files loaded");
-      console.log(this._app);
-      console.log(this._app.loader);
-      var texture = this._app.loader.resources["./rock.png"].texture;
-      console.log(texture);
-      texture = PIXI.Texture.from('./rock.png');
-      console.log(texture);
+    key: "gameLoop",
+    value: function gameLoop() {
+      var _this = this;
+
+      app_1.APPLICATION.renderer.clearBeforeRender = true;
+      app_1.APPLICATION.render();
+      document.addEventListener('keyup', this._inputHandler.onKeyUp);
+
+      this._inputHandler.processInput(this._snake);
+
+      requestAnimationFrame(function () {
+        return _this.gameLoop();
+      });
     }
+  }, {
+    key: "loadSprites",
+    value: function loadSprites() {}
   }]);
 
   return Game;
 }();
 
 exports.Game = Game;
-},{"pixi.js":"../node_modules/pixi.js/lib/pixi.es.js"}],"ts/app.ts":[function(require,module,exports) {
+},{"./objects/Snake":"ts/objects/Snake.ts","./types/Vector2":"ts/types/Vector2.ts","./user/InputHandler":"ts/user/InputHandler.ts","./app":"ts/app.ts"}],"resources/images/Snake.png":[function(require,module,exports) {
+module.exports = "/Snake.b1339938.png";
+},{}],"ts/app.ts":[function(require,module,exports) {
 "use strict";
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -43909,8 +44423,23 @@ Object.defineProperty(exports, "__esModule", {
 
 var Game_1 = require("./Game");
 
-var game = new Game_1.Game();
-},{"./Game":"ts/Game.ts"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+var Snake_png_1 = __importDefault(require("../resources/images/Snake.png"));
+
+exports.APPLICATION = new PIXI.Application({
+  width: 512,
+  height: 512,
+  antialias: true,
+  transparent: false,
+  resolution: 1.5,
+  backgroundColor: 0x1099bb
+});
+exports.APPLICATION.loader.add("tileset", Snake_png_1.default).load(setup);
+
+function setup() {
+  console.log("setup done");
+  var game = new Game_1.Game();
+}
+},{"./Game":"ts/Game.ts","../resources/images/Snake.png":"resources/images/Snake.png"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -43938,7 +44467,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54809" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58104" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
