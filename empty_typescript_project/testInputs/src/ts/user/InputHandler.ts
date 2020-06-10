@@ -1,6 +1,8 @@
 import {GameKey, Axis} from "../types/Enums"
 import { Snake } from "~ts/objects/Snake";
 import { Direction } from "readline";
+import { Timer } from "~ts/types/Timer";
+import { Game } from "~ts/Game";
 
 export class InputHandler
 {
@@ -16,7 +18,7 @@ export class InputHandler
         
     }
 
-    public processInput(snake: Snake)
+    public processInput(snake: Snake, game: Game)
     {
         // Set the snake's direction
         let axis = (this.lastControlKeyPressed === GameKey.UP || this.lastControlKeyPressed === GameKey.DOWN) ? Axis.Y : Axis.X;
@@ -27,6 +29,22 @@ export class InputHandler
             snake.update();
             this.spaceKeyPressed = 0;
         }
+
+        // Pause
+        // if(this.spaceKeyPressed === GameKey.SPACE){
+        //     if (!game.isRunning())
+        //         game.start();
+        //     else
+        //     {
+        //         if (game.isPaused())
+        //             game.resume();
+        //         else
+        //             game.pause();
+        //     }
+            
+                
+        //     this.spaceKeyPressed = 0;
+        // }
     }
 }
 

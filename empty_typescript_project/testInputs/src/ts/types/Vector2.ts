@@ -8,9 +8,16 @@ export class Vector2
         this.y = y;
     }
 
-    public set(x: number, y: number){
+    public set(x: number, y: number)
+    {
+        //console.log("oldPos(" + this.x + ", " + this.y + ") <- newPos(" + x + ", " + y + ")");
         this.x = x;
         this.y = y;
+    }
+
+    public print()
+    {
+        return "pos(" + this.x + ", " + this.y + ")";
     }
 }
 

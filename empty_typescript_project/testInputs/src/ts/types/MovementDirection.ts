@@ -17,4 +17,25 @@ export class MovementDirection{
 
     public getAxis(): Axis { return this._axis; }
     public getDirectionNumber(): Direction { return this._direction; }
+
+    // Directional
+    public isUp(): boolean
+    {
+        return (this._axis === Axis.Y && this._direction === -1) ? true : false;
+    }
+
+    public isDown(): boolean
+    {
+        return (this._axis === Axis.Y && this._direction === 1) ? true : false;
+    }
+
+    public isLeft(): boolean
+    {
+        return (this._axis === Axis.X && this._direction === -1) ? true : false;
+    }
+
+    public isRight(): boolean
+    {
+        return (this._axis === Axis.X && this._direction === 1) ? true : false;
+    }
 }
