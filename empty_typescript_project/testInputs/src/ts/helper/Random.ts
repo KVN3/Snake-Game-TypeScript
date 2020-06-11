@@ -9,12 +9,12 @@ export class Random{
     // Get the top-left pos of a random tile
     static nextTile() : Vector2
     {
-        let min = 0;
+        let min = 1;
         let max = ARENA_WIDTH / TILE_SIZE;
         let x = Math.floor(Math.random() * (max - min + 1) + min) * TILE_SIZE;
 
-        min = 0;
-        max = ARENA_HEIGHT / TILE_SIZE;
+        min = 3;
+        max = (ARENA_HEIGHT - 1 * TILE_SIZE) / TILE_SIZE;
         let y = Math.floor(Math.random() * (max - min + 1) + min) * TILE_SIZE;
 
         return new Vector2(x, y);
