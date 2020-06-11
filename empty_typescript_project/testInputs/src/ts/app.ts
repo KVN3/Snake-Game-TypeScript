@@ -6,8 +6,8 @@ import rockTileSetPath from '../resources/images/RockTile.png';
 // Perform tests
 //new PatternTester().testAll();
 
-export const ARENA_WIDTH = 512 + 256;
-export const ARENA_HEIGHT = 512 + 256;
+export const ARENA_WIDTH = 768;
+export const ARENA_HEIGHT = 768;
 export const TILE_SIZE = 32;
 
 export const APPLICATION: PIXI.Application = new PIXI.Application({ 

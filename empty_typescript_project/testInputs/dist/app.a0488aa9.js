@@ -44288,7 +44288,7 @@ var Snake = /*#__PURE__*/function () {
     this._previousDirection = new MovementDirection_1.MovementDirection(Enums_1.Axis.X, -1);
     this._segments = [];
     this.position = position;
-    this._segments[0] = new SnakeSegment_1.SnakeSegment(new Vector2_1.Vector2(17 * app_1.TILE_SIZE - 1 * app_1.TILE_SIZE, 16 * app_1.TILE_SIZE), this._direction, true);
+    this._segments[0] = new SnakeSegment_1.SnakeSegment(new Vector2_1.Vector2(this.position.x, this.position.y), this._direction, true);
     this._segments[1] = new SnakeSegment_1.SnakeSegment(new Vector2_1.Vector2(17 * app_1.TILE_SIZE + 0 * app_1.TILE_SIZE, 16 * app_1.TILE_SIZE), new MovementDirection_1.MovementDirection(this._direction.getAxis(), this._direction.getDirectionNumber()));
     this._segments[2] = new SnakeSegment_1.SnakeSegment(new Vector2_1.Vector2(17 * app_1.TILE_SIZE + 1 * app_1.TILE_SIZE, 16 * app_1.TILE_SIZE), new MovementDirection_1.MovementDirection(this._direction.getAxis(), this._direction.getDirectionNumber()));
 
@@ -44352,7 +44352,6 @@ var Snake = /*#__PURE__*/function () {
       var newSegment = new SnakeSegment_1.SnakeSegment(position, direction, false);
       newSegment.setTail(true);
       lastSegment.setTail(false);
-      this.update();
       app_1.APPLICATION.render();
       this._segments[this._segments.length] = newSegment;
     }
@@ -44467,12 +44466,13 @@ var Random = /*#__PURE__*/function () {
   }, {
     key: "nextTile",
     value: function nextTile() {
-      var min = 0;
-      var max = app_1.ARENA_WIDTH / app_1.TILE_SIZE;
+      var min = 1;
+      var max = (app_1.ARENA_WIDTH - 2 * app_1.TILE_SIZE) / app_1.TILE_SIZE;
       var x = Math.floor(Math.random() * (max - min + 1) + min) * app_1.TILE_SIZE;
-      min = 0;
-      max = app_1.ARENA_HEIGHT / app_1.TILE_SIZE;
+      min = 3;
+      max = (app_1.ARENA_HEIGHT - 2 * app_1.TILE_SIZE) / app_1.TILE_SIZE;
       var y = Math.floor(Math.random() * (max - min + 1) + min) * app_1.TILE_SIZE;
+      console.log(x + ", " + y);
       return new Vector2_1.Vector2(x, y);
     }
   }]);
@@ -44650,7 +44650,7 @@ var CollisionHandler = /*#__PURE__*/function () {
   }, {
     key: "hitArenaBounds",
     value: function hitArenaBounds(snake) {
-      return snake.position.x < app_1.TILE_SIZE || snake.position.x > app_1.ARENA_WIDTH - app_1.TILE_SIZE || snake.position.y < app_1.TILE_SIZE * 3 || snake.position.y > app_1.ARENA_HEIGHT - app_1.TILE_SIZE;
+      return snake.position.x < app_1.TILE_SIZE || snake.position.x > app_1.ARENA_WIDTH - 2 * app_1.TILE_SIZE || snake.position.y < app_1.TILE_SIZE * 3 || snake.position.y > app_1.ARENA_HEIGHT - 2 * app_1.TILE_SIZE;
     }
   }]);
 
@@ -44986,7 +44986,7 @@ var Game = /*#__PURE__*/function () {
     this._collisionHandler = new CollisionHandler_1.CollisionHandler();
     document.body.appendChild(app_1.APPLICATION.view);
     Arena_1.Arena.getInstance().draw();
-    this._snake = new Snake_1.Snake(new Vector2_1.Vector2(256, 256));
+    this._snake = new Snake_1.Snake(new Vector2_1.Vector2(17 * app_1.TILE_SIZE - 1 * app_1.TILE_SIZE, 16 * app_1.TILE_SIZE));
     this._food = new Food_1.Food();
     this.gameLoop();
     var container = new PIXI.Container();
@@ -45000,7 +45000,6 @@ var Game = /*#__PURE__*/function () {
     graphics.beginFill(0x404040);
     graphics.drawRect(0, 0, 1000, 1000);
     graphics.endFill();
-    container.addChild(graphics);
     app_1.APPLICATION.stage.addChild(container);
   }
 
@@ -45106,8 +45105,8 @@ var Snake_png_1 = __importDefault(require("../resources/images/Snake.png"));
 
 var RockTile_png_1 = __importDefault(require("../resources/images/RockTile.png"));
 
-exports.ARENA_WIDTH = 512 + 256;
-exports.ARENA_HEIGHT = 512 + 256;
+exports.ARENA_WIDTH = 768;
+exports.ARENA_HEIGHT = 768;
 exports.TILE_SIZE = 32;
 exports.APPLICATION = new PIXI.Application({
   width: exports.ARENA_WIDTH,

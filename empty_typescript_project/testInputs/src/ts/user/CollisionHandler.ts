@@ -28,6 +28,6 @@ export class CollisionHandler
     }
 
     private hitArenaBounds(snake: Snake): boolean{
-        return (snake.position.x < TILE_SIZE || snake.position.x > ARENA_WIDTH - TILE_SIZE || snake.position.y < TILE_SIZE * 3 || snake.position.y > ARENA_HEIGHT - TILE_SIZE);
+        return (snake.position.x < TILE_SIZE || snake.position.x > ARENA_WIDTH - 2 * TILE_SIZE || snake.position.y < TILE_SIZE * 3 || snake.position.y > ARENA_HEIGHT - 2 * TILE_SIZE);
     }
 }

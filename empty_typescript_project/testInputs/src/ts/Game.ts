@@ -2,7 +2,7 @@ import * as PIXI from 'pixi.js';
 import { Snake } from './objects/Snake';
 import { Vector2 } from './types/Vector2';
 import { InputHandler } from './user/InputHandler';
-import { APPLICATION, ARENA_WIDTH, ARENA_HEIGHT } from './app';
+import { APPLICATION, ARENA_WIDTH, ARENA_HEIGHT, TILE_SIZE } from './app';
 import tileSetPath from '../resources/images/Snake.png';
 import { Food } from './objects/Food';
 import { CollisionHandler } from './user/CollisionHandler';
@@ -100,7 +100,7 @@ export class Game
           Arena.getInstance().draw();
     
           // GameObjects
-          this._snake = new Snake(new Vector2(256,256));
+          this._snake = new Snake(new Vector2(17 * TILE_SIZE - 1 * TILE_SIZE, 16 * TILE_SIZE));
           this._food = new Food();
     
           this.gameLoop();
@@ -119,7 +119,7 @@ export class Game
           graphics.drawRect(0, 0, 1000, 1000);
           graphics.endFill();
 
-          container.addChild(graphics);
+          //container.addChild(graphics);
     
           APPLICATION.stage.addChild(container);
         }

@@ -10,12 +10,14 @@ export class Random{
     static nextTile() : Vector2
     {
         let min = 1;
-        let max = ARENA_WIDTH / TILE_SIZE;
+        let max = (ARENA_WIDTH - 2 * TILE_SIZE) / TILE_SIZE;
         let x = Math.floor(Math.random() * (max - min + 1) + min) * TILE_SIZE;
 
         min = 3;
-        max = (ARENA_HEIGHT - 1 * TILE_SIZE) / TILE_SIZE;
+        max = (ARENA_HEIGHT - 2 * TILE_SIZE) / TILE_SIZE;
         let y = Math.floor(Math.random() * (max - min + 1) + min) * TILE_SIZE;
+
+        console.log(x + ", " + y);
 
         return new Vector2(x, y);
     }

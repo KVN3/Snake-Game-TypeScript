@@ -36,7 +36,7 @@ export class Snake implements IPlayerObject
         this.position = position;
         //this.draw();
 
-        this._segments[0] = new SnakeSegment(new Vector2(17 * TILE_SIZE - 1 * TILE_SIZE, 16 * TILE_SIZE), this._direction, true);
+        this._segments[0] = new SnakeSegment(new Vector2(this.position.x, this.position.y), this._direction, true);
         //this._segments[0].setDirection(this._direction);
         // //this._segments[0].setPreviousDirection(this._previousDirection);
 
@@ -134,7 +134,7 @@ export class Snake implements IPlayerObject
         newSegment.setTail(true);
         lastSegment.setTail(false);
 
-        this.update();
+        
         APPLICATION.render();
 
         // Add to the chain

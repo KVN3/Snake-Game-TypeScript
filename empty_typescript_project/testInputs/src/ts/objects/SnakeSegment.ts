@@ -78,9 +78,6 @@ export class SnakeSegment extends GameObject
 
         this._sprite.width = 33;
         this._sprite.height = 33;
-
-        // Add and render
-        //APPLICATION.stage.addChild(this._sprite);
     }
 
     // Sprite setting
