@@ -25,26 +25,26 @@ export class InputHandler
         let direction: Direction = (this.lastControlKeyPressed === GameKey.LEFT || this.lastControlKeyPressed === GameKey.UP) ? -1 : 1;
         snake.setDirection(axis, direction);
 
-        if(this.spaceKeyPressed === GameKey.SPACE){
-            snake.update();
-            this.spaceKeyPressed = 0;
-        }
-
-        // Pause
         // if(this.spaceKeyPressed === GameKey.SPACE){
-        //     if (!game.isRunning())
-        //         game.start();
-        //     else
-        //     {
-        //         if (game.isPaused())
-        //             game.resume();
-        //         else
-        //             game.pause();
-        //     }
-            
-                
+        //     snake.update();
         //     this.spaceKeyPressed = 0;
         // }
+
+        // Pause
+        if(this.spaceKeyPressed === GameKey.SPACE){
+            if (!game.isRunning())
+                game.start();
+            else
+            {
+                if (game.isPaused())
+                    game.resume();
+                else
+                    game.pause();
+            }
+            
+                
+            this.spaceKeyPressed = 0;
+        }
     }
 }
 

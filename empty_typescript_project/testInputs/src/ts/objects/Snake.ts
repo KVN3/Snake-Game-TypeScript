@@ -6,11 +6,13 @@ import { MovementDirection } from '../types/MovementDirection';
 import { Direction } from 'readline';
 import { SnakeSegment } from './SnakeSegment';
 import { TILE_SIZE, APPLICATION } from '~ts/app';
+import { Game } from '~ts/Game';
+import { GameObject } from '~ts/types/GameObject';
 
 export class Snake implements IPlayerObject
 {
     public position: Vector2;
-    private _movementModifier: number = .16;
+    private _movementModifier: number = 16;
 
     // Direction
     private _direction: MovementDirection = new MovementDirection(Axis.X, -1);
@@ -50,17 +52,11 @@ export class Snake implements IPlayerObject
         //     new MovementDirection(this._direction.getAxis(), this._direction.getDirectionNumber()));
          this._segments[2].setTail(true);
 
-         this._movementModifier = 16;
-         this.update();
-         this.update();
-         this.update();
-         this._movementModifier = 0.16;
+         this._movementModifier = 32;
     }
 
     public update(): void
     {
-        console.log("Updating snake...");
-
         // Apply direction to the position
         this.applyDirection();
 
@@ -72,8 +68,6 @@ export class Snake implements IPlayerObject
     // Draw the snake
     public draw()
     {
-        console.log("Drawing snake...");
-
         let nextSegmentPosition: Vector2 = new Vector2(0, 0);
 
         for (let i = 0; i < this._segments.length; i++) 
@@ -112,9 +106,8 @@ export class Snake implements IPlayerObject
 
     public levelUp()
     {
-        // TO DO: Update score
         this.increaseLength();
-        //this.draw();
+        Game.getInstance().increaseScore();
     }
 
     private increaseLength(){
@@ -140,10 +133,6 @@ export class Snake implements IPlayerObject
         // Update tail status
         newSegment.setTail(true);
         lastSegment.setTail(false);
-
-        // Update the sprites accordingly to their next segment in chain
-        lastSegment.updateSprite(this._segments[this._segments.length - 2]);
-        newSegment.updateSprite(lastSegment);
 
         this.update();
         APPLICATION.render();
@@ -173,6 +162,11 @@ export class Snake implements IPlayerObject
     public getHead(): SnakeSegment
     {   
         return this._segments[0];
+    }
+
+    public die()
+    {
+        Game.getInstance().endGame();
     }
 }
 

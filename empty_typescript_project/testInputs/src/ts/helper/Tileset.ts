@@ -19,5 +19,8 @@ export const X_STRAIGHT: PIXI.Rectangle = new PIXI.Rectangle    (16, 48, 16, 16)
 export const BUNNY: PIXI.Rectangle = new PIXI.Rectangle         (32, 48, 16, 16);
 export const GRASS: PIXI.Rectangle = new PIXI.Rectangle         (48, 48, 16, 16);
 
+// Rock wall
+export const ROCK_WALL: PIXI.Rectangle = new PIXI.Rectangle         (0, 0, 16, 16);
+
 // export const TILESET: string = "/Snake.b1339938.png"
 // export const TEXTURE: PIXI.Texture = PIXI.Texture.from(TILESET);

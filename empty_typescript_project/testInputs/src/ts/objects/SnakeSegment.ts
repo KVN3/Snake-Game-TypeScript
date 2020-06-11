@@ -59,6 +59,9 @@ export class SnakeSegment extends GameObject
     {
         this._sprite.position.x = this.position.x;
         this._sprite.position.y = this.position.y;
+
+        // Allows for a refresh and adds the sprite if it isn't added yet
+        APPLICATION.stage.addChild(this._sprite);
     }
 
     public draw()
@@ -73,8 +76,11 @@ export class SnakeSegment extends GameObject
         this._sprite.x = this.position.x;
         this._sprite.y = this.position.y;
 
+        this._sprite.width = 33;
+        this._sprite.height = 33;
+
         // Add and render
-        APPLICATION.stage.addChild(this._sprite);
+        //APPLICATION.stage.addChild(this._sprite);
     }
 
     // Sprite setting
@@ -122,6 +128,9 @@ export class SnakeSegment extends GameObject
             this.setTailFrame(nextSegment.getPreviousDirection());
         else
             this.setSprite(nextSegment.previousSprite);
+
+        this._sprite.width = 33;
+        this._sprite.height = 33;
     
         this.updateStage();
     }
