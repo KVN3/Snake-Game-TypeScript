@@ -1,62 +1,51 @@
 import { GameObject } from "~ts/types/GameObject";
 import { Vector2 } from "~ts/types/Vector2";
-import { SnakeSegment } from "./SnakeSegment";
 import * as TILESET from "~ts/helper/Tileset";
 import { Random } from "~ts/helper/Random";
-import { ARENA_WIDTH, ARENA_HEIGHT, APPLICATION, TILE_SIZE } from "~ts/app";
-import { Snake } from "./Snake";
+import { APPLICATION, TILE_SIZE } from "~ts/app";
+import { Snake } from "./snake/Snake";
 
-export class Food extends GameObject
-{
+export class Food extends GameObject {
     private readonly _MAXSIZE: number = TILE_SIZE - 6;
     private readonly _MINSIZE: number = TILE_SIZE / 1.3;
     private _isShrinking: boolean = true;
-    private _resizingModifier: number = .4;
+    private _resizingModifier: number = .2;
 
     // Current & Previous sprite
-    public constructor()
-    {
-        super(new Vector2(10*TILE_SIZE, 16*TILE_SIZE));
-        let position: Vector2 = new Vector2(Random.next(0, ARENA_WIDTH - TILE_SIZE), 
-                                            Random.next(0, ARENA_HEIGHT - TILE_SIZE));
-        
+    public constructor() {
+        super(Random.nextTile());
         this.draw();
     }
 
-    public update()
+    public update() 
     {
         this.resize();
+        APPLICATION.stage.addChild(this._sprite);
     }
 
-    private resize()
-    {
+    private resize() {
         // Shrink
-        if(this._isShrinking)
-        {
-            this._sprite.width -= this._resizingModifier;
-            this._sprite.height -= this._resizingModifier;
+        if (this._isShrinking) {
+            this._sprite.width -= this._resizingModifier * Random.next(1, 3);
+            this._sprite.height -= this._resizingModifier * Random.next(1, 3);
 
-            if(this._sprite.height < this._MINSIZE)
-            {
+            if (this._sprite.height < this._MINSIZE) {
                 this._isShrinking = false;
             }
         }
 
         // Grow
-        else
-        {
-            this._sprite.width += this._resizingModifier;
-            this._sprite.height += this._resizingModifier;
+        else {
+            this._sprite.width += this._resizingModifier * Random.next(1, 3);
+            this._sprite.height += this._resizingModifier * Random.next(1, 3);
 
-            if(this._sprite.height > this._MAXSIZE)
-            {
+            if (this._sprite.height > this._MAXSIZE) {
                 this._isShrinking = true;
             }
         }
     }
 
-    public draw()
-    {
+    public draw() {
         let fullTileset = new PIXI.Texture(PIXI.Texture.from("tileset").baseTexture);
 
         // Create sprite
@@ -73,19 +62,14 @@ export class Food extends GameObject
         this._sprite.anchor.set(.5, .5);
         this._sprite.x += 15;
         this._sprite.y += 17;
-
-        // Add and render
-        APPLICATION.stage.addChild(this._sprite);
     }
 
-    private respawnAt(position: Vector2)
-    {
+    private respawnAt(position: Vector2) {
         this._sprite.position.x = position.x + 15;
         this._sprite.position.y = position.y + 17;
     }
 
-    public onCollision(snake: Snake)
-    {
+    public onCollision(snake: Snake) {
         snake.levelUp();
         this.respawnAt(Random.nextTile());
     }

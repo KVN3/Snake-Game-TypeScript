@@ -1,7 +1,7 @@
 //import PatternTester from "./design_pattern_examples/0_test/PatternTester"
 import { Game } from './Game';
-import tileSetPath from '../resources/images/Snake.png';
-import rockTileSetPath from '../resources/images/RockTile.png';
+import tileSetPath from '../../resources/images/Snake.png';
+import rockTileSetPath from '../../resources/images/RockTile.png';
 
 // Perform tests
 //new PatternTester().testAll();
@@ -9,8 +9,10 @@ import rockTileSetPath from '../resources/images/RockTile.png';
 export const ARENA_WIDTH = 768;
 export const ARENA_HEIGHT = 768;
 export const TILE_SIZE = 32;
+export var USERNAME = "";
 
-export const APPLICATION: PIXI.Application = new PIXI.Application({ 
+// Game
+export const APPLICATION: PIXI.Application = new PIXI.Application({
   width: ARENA_WIDTH,         // default: 800
   height: ARENA_HEIGHT,        // default: 600
   antialias: true,    // default: false
@@ -24,10 +26,20 @@ APPLICATION.loader
   .add("rock_tileset", rockTileSetPath)
   .load(setup);
 
-      function setup() {
-          console.log("setup done");
-        const game = Game.getInstance();
-      }
+function setup() {
+  console.log("Textures loaded!");
+  Game.getInstance();
+}
 
+// Username Input box code
+let inputElement = document.getElementById('name_input');
+if(inputElement != null)
+{
+  inputElement.onblur = saveUsername;
+}
 
-
+function saveUsername()
+{
+  let inputElement = <HTMLInputElement> document.getElementById('name_input');
+  USERNAME = inputElement.value;
+}

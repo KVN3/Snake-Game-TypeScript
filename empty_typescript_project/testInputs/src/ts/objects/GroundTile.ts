@@ -1,9 +1,7 @@
 import { GameObject } from "~ts/types/GameObject";
-import { Snake } from "./Snake";
+import { Snake } from "./snake/Snake";
 import { Vector2 } from "~ts/types/Vector2";
 import { APPLICATION } from "~ts/app";
-import * as TILESET from "~ts/helper/Tileset";
-import { Rectangle } from "pixi.js";
 
 export class GroundTile extends GameObject
 {
@@ -36,7 +34,7 @@ export class GroundTile extends GameObject
 
     public onCollision(snake: Snake)
     {
-
+        
     }
 
     public update()

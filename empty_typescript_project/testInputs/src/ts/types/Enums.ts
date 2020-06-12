@@ -3,7 +3,8 @@ export enum GameKey {
     DOWN = 40,
     LEFT = 37,
     RIGHT = 39,
-    SPACE = 32
+    SPACE = 32,
+    F = 70
 }
 
 export enum ScreenEdge {
@@ -16,4 +17,9 @@ export enum ScreenEdge {
 
 export enum Axis {
     X, Y
+}
+
+export enum AudioType
+{
+    DIE, EAT, MUSIC
 }

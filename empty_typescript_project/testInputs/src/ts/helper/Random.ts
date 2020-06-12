@@ -7,7 +7,7 @@ export class Random{
     }
 
     // Get the top-left pos of a random tile
-    static nextTile() : Vector2
+    static nextTile(attempt: number) : Vector2
     {
         let min = 1;
         let max = (ARENA_WIDTH - 2 * TILE_SIZE) / TILE_SIZE;
@@ -17,9 +17,9 @@ export class Random{
         max = (ARENA_HEIGHT - 2 * TILE_SIZE) / TILE_SIZE;
         let y = Math.floor(Math.random() * (max - min + 1) + min) * TILE_SIZE;
 
-        console.log(x + ", " + y);
+        let tile = new Vector2(x, y);
+        // TO DO: Recursive method checking if tile is available, array of boolean tiles /32
 
-        return new Vector2(x, y);
+        return tile;
     }
-
 }
